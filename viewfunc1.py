@@ -8,13 +8,14 @@ fake_ru = Faker('ru_Ru')
 @app.route('/content')
 def content():
     with open('requirements.txt', 'r') as file:
-        print(file.read())
+		out = file.read()
+        return f'requirements.txt:\n{out}'
 
 
 @app.route('/users')
 def users():
     for i in range(1, 11):
-        print(i, fake_ru.name(), fake_ru.ascii_free_email())
+        return f'Users:\n{i, fake_ru.name(), fake_ru.ascii_free_email()}
 
 
 @app.route('/csv_read')
