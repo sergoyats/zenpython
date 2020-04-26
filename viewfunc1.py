@@ -9,15 +9,16 @@ fake_ru = Faker('ru_Ru')
 def content():
     with open('requirements.txt', 'r') as file:
 		out = file.read()
-        return f'requirements.txt:\n{out}'
+        return f'{out}'
 
 
-@app.route('/users')
+# @app.route('/users')
 def users():
-    for i in range(1, 11):
-        return f'Users:\n{i, fake_ru.name(), fake_ru.ascii_free_email()}
+	users = [(i, fake_ru.name(), fake_ru.ascii_free_email()) for i in range(1, 101)]
+	return f'{users}'
+		
 
-
+print(users())
 @app.route('/csv_read')
 def csv_read():
     with open('hw.csv') as f:
